@@ -6,6 +6,8 @@
 import { messageRenderer } from "./renderers/messages.js";
 import { userValidator } from "./validators/users.js";
 import { usersAPI_auto } from "./api/_users.js";
+import { authAPI_auto } from "./api/_auth.js";
+import { sessionManager } from "./utils/session.js";
 
 const form = document.getElementById("register-form"); //Obtenemos en un diccionario todos los datos del formulario
 const divErrors = document.getElementById("errors"); //Obtenemos el contenido del contenedor de errores
@@ -31,7 +33,11 @@ async function validateForm(event) {
 
             myFD.delete("password2");
 
-            await usersAPI_auto.create(myFD);
+            let loginData = await authAPI_auto.register(myFD);
+            let sessionToken = loginData.sessionToken;
+            let loggedUser = loginData.user;
+
+            sessionManager.login(sessionToken, loggedUser);
 
             messageRenderer.showSuccessMessage(`<h3 class='d-inline'>
             <i class='fa fa-check'></i>
@@ -43,7 +49,7 @@ async function validateForm(event) {
             setTimeout(function(){						// Durante 5 segundos
             window.location.href="index.html";		// Y se vuelve a la galería
             }, 
-            5000);
+            1000);
         }catch(err){
             console.log(err);
         }

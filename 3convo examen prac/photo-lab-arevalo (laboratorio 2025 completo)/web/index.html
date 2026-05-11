@@ -1,12 +1,19 @@
 <!doctype html>
 <head>
+	<script src="./js/libs/axios.min.js"></script>
 	<script src= "js/utils/include.js"> </script> <!-- Para hacer includes de código HTML en esta página -->
 	<script>include("Layout/head.html","head")</script> <!--Incluye head.html en en la etiqueta head-->
 	<script src="/js/libs/bootstrap.min.js"></script> <!--Incluye bootstrap en nuestro proyecto-->
 	<!-- Incluir librería Axios-->
-	<script src="./js/libs/axios.min.js"></script>
+	
 	<script type="module" src="js/index.js"></script> <!-- Controlador de la vista -->
-	<link rel="stylesheet" type="text/css" href="css/style.css"> <!-- Estilo para miniaturas -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+	<!--JS que maneja la cabecera-->
+
+	<script src="../js/header.js" type="module"></script>
+
+	<!-- Estilo para miniaturas -->
 	<title>Recent photos</title>
 </head>
 <body>
