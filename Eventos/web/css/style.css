@@ -1,0 +1,52 @@
+
+
+
+.event-body {
+
+    background-color: aliceblue;
+    border-radius: 15px;
+    width: 50%;
+    font-size: large;
+    margin: 0 auto;
+
+
+
+}
+
+.borde {
+
+    min-height: 350px;
+    border: double;
+    border-radius: 50px;
+
+}
+
+.foto {
+
+    margin-top: 3%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10%;
+    
+
+}
+
+/*
+@media(max-width: 576px) {
+
+    .event-img {
+
+        display: flexbox;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .event-body {
+        
+        margin: 10px  auto;
+        text-align: center;
+        object-fit: cover;
+        width: 50%;
+    }
+
+}*/

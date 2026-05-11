@@ -1,0 +1,66 @@
+{
+    "getAll": {
+        "description": "Gets all entries from 'teams'",
+        "route": "/teams",
+        "method": "GET",
+        "sql": "SELECT * FROM teams",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "getById": {
+        "description": "Gets an entry from 'teams' by its primary key",
+        "route": "/teams/$teamId",
+        "method": "GET",
+        "sql": "SELECT * FROM teams WHERE teamId = $teamId",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "create": {
+        "description": "Creates a new entry in 'teams'",
+        "route": "/teams",
+        "method": "POST",
+        "sql": "INSERT INTO teams (name, president, fieldCapacity, foundationDate, photoURL) VALUES ($name, $president, $fieldCapacity, $foundationDate, $photoURL)",
+        "request_body_params": [
+            "name",
+            "president",
+            "fieldCapacity",
+            "foundationDate",
+            "photoURL"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "update": {
+        "description": "Updates an existing entry in 'teams' by its primary key",
+        "route": "/teams/$teamId",
+        "method": "PUT",
+        "sql": "UPDATE teams SET name = $name, president = $president, fieldCapacity = $fieldCapacity, foundationDate = $foundationDate, photoURL = $photoURL WHERE teamId = $teamId",
+        "request_body_params": [
+            "name",
+            "president",
+            "fieldCapacity",
+            "foundationDate",
+            "photoURL"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "delete": {
+        "description": "Deletes an existing entry in 'teams' by its primary key",
+        "route": "/teams/$teamId",
+        "method": "DELETE",
+        "sql": "DELETE FROM teams WHERE teamId = $teamId",
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    }
+}

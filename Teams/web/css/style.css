@@ -1,0 +1,24 @@
+nav.navbar {
+    background-color: rgb(202, 202, 202);
+}
+
+nav.navbar a {
+    color: rgb(41, 41, 41) !important;
+}
+
+.imagen {
+
+    height: auto;
+    max-width: 15vb;
+}
+
+/*
+.table td, .table th {
+    vertical-align: middle;
+} */
+
+.table td, .table th, .col a {
+    text-align: center;
+    vertical-align: middle;
+}
+

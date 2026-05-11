@@ -1,0 +1,92 @@
+<!doctype HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/axios.min.js"></script>
+    <script src="js/utils/include.js"></script>
+
+    <script src="js/header.js" type="module"></script>
+
+    <script src="js/events.js" type="module"></script>
+
+    <title>Eventos</title>
+</head>
+
+<body>
+    <div id="page-header"></div>
+
+    <h2 class="page-header text-center mt-3 mb-4">Registra tu evento:</h2>
+
+    <div class="container">
+        <div id="errors"></div>
+
+        <form id="formulario">
+
+            <div>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <label for="name">Nombre:</label>
+                        <input type="text" class="form-control mt-2 mb-3" id="name-input" name="name"
+                            placeholder="Nombre del evento..." required>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <label for="eventDate">Fecha del evento:</label>
+                        <input type="date" class="form-control mt-2 mb-3" id="eventDate-input" name="eventDate"
+                            required>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <label for="maxParticipants">Aforo: </label>
+                        <input type="number" class="form-control mt-2 mb-3 " id="maxParticipants-input"
+                            name="maxParticipants" required min="1" step="1">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <label for="place">Lugar:</label>
+                        <input type="text" class="form-control mt-2 mb-3" id="place-input" name="place" required>
+
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <label for="imageUrl">URL:</label>
+                        <input type="text" class="form-control mt-2 mb-3" id="imageUrl-input" name="imageUrl" required>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6 text-center">
+                        <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+
+    <script>
+        include("header.html", "#page-header");
+    </script>
+
+</body>
+
+</html>

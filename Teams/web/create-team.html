@@ -1,0 +1,89 @@
+<!doctype HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/axios.min.js"></script>
+    <script src="js/utils/include.js"></script>
+
+    <script src="js/header.js" type="module"></script>
+    <script src="js/create-team.js" type="module"></script>
+    <title>Examen IISSI-2</title>
+</head>
+
+<body>
+
+    <div id="page-header"></div>
+
+    <h3 class="page-title text-center">Registra tu equipo:</h3>
+    <hr>
+    <div class="container">
+        <div id="errors"></div>
+
+        <form id="formulario">
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-6">
+                    <label for="name" class="mb-2 mt-2">Nombre del equipo:</label>
+                    <input type="text" name="name" id="name-input" placeholder="Nombre del equipo..."
+                        class="form-control" required>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-6">
+                    <label for="president" class="mb-2 mt-2">Presidente del equipo:</label>
+                    <input type="text" name="president" id="president-input" placeholder="Presidente del equipo..."
+                        class="form-control" required>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-6">
+                    <label for="fieldCapacity" class="mb-2 mt-2">Aforo del estadio:</label>
+                    <input type="number" name="fieldCapacity" id="fieldCapacity-input" placeholder="Aforo..."
+                        class="form-control" min="100" max="200000" step="1" required>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-6">
+                    <label for="foundationDate" class="mb-2 mt-2">Fecha de fundación:</label>
+                    <input type="date" name="foundationDate" id="foundationDate-input" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-6">
+                    <label for="photoURL" class="mb-2 mt-2">Foto del escudo:</label>
+                    <input type="text" name="photoURL" id="photoURL-input" placeholder="URL..."
+                        class="form-control" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <script>
+        include("header.html", "#page-header");
+    </script>
+
+</body>
+
+</html>

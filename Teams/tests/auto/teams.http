@@ -1,0 +1,147 @@
+
+### This is an auto-generated test suite, it needs to be completed with valid data.
+### These are not all tests you need, more of them should be created to evaluate the functional
+### requirements of your project. These tests only test the CRUD endpoints of the entity.
+### Silence is a DEAL research team project, more info about us in https://deal.us.es
+@BASE = http://127.0.0.1:8081/api/v1
+
+### Auxiliary query
+### Positive test
+### Test 00: Get all existing teams
+### This query is used in several of the below tests it should be executed first.
+# @name teams
+GET {{BASE}}/teams
+
+### Login a(n) users and save the generated token 
+### This token is used in several of the below tests it should be executed second.
+# @name login
+POST {{BASE}}/login 
+Content-Type: application/json 
+
+{ 
+	"username": ###REPLACE###,
+	"password": ###REPLACE###
+}
+
+###
+@token = {{login.response.body.sessionToken}}
+
+
+### TESTS BEGIN
+
+### Test 01: Get one existing teams by its id.
+### positive test 
+@teaId = {{teams.response.body.0.teamId}}
+GET {{BASE}}/teams/{{teaId}} 
+Content-Type: application/json 
+
+
+### Test 02: Try get one existing teams by its nonexistent id.
+### negative test 
+GET {{BASE}}/teams/999999999
+Content-Type: application/json 
+
+
+### Test 03: Add a new teams successfully
+### Positive test 
+### We assume that the token has been aquired by the login request.
+# @name newteams
+POST {{BASE}}/teams 
+Content-Type: application/json 
+Token: {{token}} 
+
+{
+	"name": ###REPLACE###,
+	"president": ###REPLACE###,
+	"fieldCapacity": ###REPLACE###,
+	"foundationDate": ###REPLACE###,
+	"photoURL": ###REPLACE###
+} 
+
+### Check the created teams
+
+@newteamsid = {{newteams.response.body.lastId}}
+GET {{BASE}}/teams/{{newteamsid}}
+Content-Type: application/json 
+
+### Test 04: Add a new teams without a session token
+### Negative test 
+POST {{BASE}}/teams 
+Content-Type: application/json 
+
+{ 
+	"name": ###REPLACE###,
+	"president": ###REPLACE###,
+	"fieldCapacity": ###REPLACE###,
+	"foundationDate": ###REPLACE###,
+	"photoURL": ###REPLACE###
+}
+
+### Test 05: Modify an existing teams 
+### Positive test 
+@teaId = {{teams.response.body.0.teamId}} 
+PUT {{BASE}}/teams/{{teaId}} 
+Content-Type: application/json 
+Token: {{token}} 
+
+{ 
+	"name": ###REPLACE###,
+	"president": ###REPLACE###,
+	"fieldCapacity": ###REPLACE###,
+	"foundationDate": ###REPLACE###,
+	"photoURL": ###REPLACE###
+}
+
+### Check the modified teams
+
+GET {{BASE}}/teams/{{newteamsid}}
+Content-Type: application/json 
+
+### Test 06: Try to modify an existing teams without a session token
+### Negative test
+@teaId = {{teams.response.body.0.teamId}}
+PUT {{BASE}}/teams/{{teaId}}
+Content-Type: application/json
+
+{
+	"name": ###REPLACE###,
+	"president": ###REPLACE###,
+	"fieldCapacity": ###REPLACE###,
+	"foundationDate": ###REPLACE###,
+	"photoURL": ###REPLACE###
+}
+
+### Test 07: Delete an existing teams
+### Positive test
+
+### Create a new teams, which we will delete
+# @name createdteaToDelete
+POST {{BASE}}/teams
+Content-Type: application/json
+Token: {{token}}
+
+{
+	"name": ###REPLACE###,
+	"president": ###REPLACE###,
+	"fieldCapacity": ###REPLACE###,
+	"foundationDate": ###REPLACE###,
+	"photoURL": ###REPLACE###
+}
+
+### Check the created teams
+@teadelId = {{createdteaToDelete.response.body.lastId}}
+GET {{BASE}}/teams/{{teadelId}}
+Content-Type: application/json 
+
+### Delete the teams
+DELETE {{BASE}}/teams/{{teadelId}}
+Token: {{token}}
+
+### Check the deleted teams
+GET {{BASE}}/teams/{{teadelId}}
+Content-Type: application/json 
+
+### Test 08: Try to delete a teams without a session token
+### Negative test
+DELETE {{BASE}}/teams/{{teaId}}
+
