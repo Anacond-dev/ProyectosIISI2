@@ -1,0 +1,22 @@
+{
+    "getAll": {
+        "description": "Gets all entries from 'v_votes'",
+        "route": "/v_votes",
+        "method": "GET",
+        "sql": "SELECT * FROM v_votes",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "getavgValueByPId": {
+        "description": "Gets an avgValue from 'v_votes' by its photo id",
+        "route": "/v_votes/$photoId",
+        "method": "GET",
+        "sql": "SELECT avgValue FROM v_votes WHERE photoId = $photoId LIMIT 1",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    }
+}

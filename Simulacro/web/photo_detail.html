@@ -1,0 +1,71 @@
+<!doctype html>
+<head>
+	<script src= "/js/utils/include.js"> </script> <!-- Para hacer includes de código HTML en esta página -->
+	<script>include("Layout/head.html","head")</script>
+	<script src="/js/libs/bootstrap.min.js"></script>
+	<script src="./js/libs/axios.min.js"></script> <!-- Librería para llamadas AJAX -->
+	<script src= "js/photo_detail.js" type="module"> </script> <!-- Archivo de control .js externo -->
+	<script src="js/header.js" type="module"></script> <!-- Control acceso público/privado -->
+	<title>Photo Detail</title>
+</head>
+<body>
+<header  class="container-fluid px-1 py-0">
+	<script>include ("Layout/header.html", "header");</script>
+	<h4 class="fixed-top text-end fw-light mt-1 pe-1">
+		<i class="fa fa-camera-retro  "></i> Photo Detail
+	</h4>
+</header>
+<main class="container-fluid p-2">
+	<aside class= "row">
+		<div id="errors" class="form-group"></div>
+	</aside>
+	<section class="row px-3">
+			<article class="col-md-6 p-2 border boder-secondary rounded">
+				<div id="photo-details" class="row"> </div> <!-- Photo details will be here -->
+				<div class="col-md-12 mt-2">
+					<button class="btn btn-secondary col-md mr-1 py-0" onclick="window.history.back()">
+						<i class="fa fa-undo mr-2"></i> Back
+					</button>
+				</div>
+			</article>
+			<article class="col-sm-6 p-2 border boder-secondary rounded">
+				<form class="row" id="formVote">	
+					<div class="row mb-3 px-2">
+						<h1 class="col-sm-6 text-start fw-light">R a t i n g</h1>
+						
+						<div class="col-sm-6 m-0" id="divButtons">
+								<span class= "float-start btn btn-success me-1" id="btnAddRate" title="Rate this pic!">
+									<i class="fa fa-plus"></i> New
+								</span>
+								<span class= "float-start btn btn-success me-1"  id="btnUpdRate" title="Update your rate!">
+									<i class="fa fa-pencil"></i> Update
+								</span>
+								<span class= "float-start btn btn-danger me-1"  id="btnDelRate"  title="Delete your rate!">
+									<i class="fa fa-trash"></i> Delete
+								</span>
+							
+						</div>
+					</div>
+					<div class="row m-0 p-0">
+						<h3 class="col-sm-6">
+							<div class="">
+								<div class="fw-light">P u b l i c</div>
+								<label id="public-vote" class="col-sm-3 bg-secondary text-white text-center border rounded"></label>
+								<span class="col-sm-8 text-secondary" id="public-stars-value"></span>		
+							</div>
+						</h3>
+						<h3 id="private" class="col-sm-6 ">					
+							<div id="votoprivado" class="">
+								<div class="fw-light text-success">P r i v a t e</div>
+								<input class="text-center text-white text-bold bg-success rounded" type="number" min="0" max="5" id="rating-input" name="value" > 
+								<span class="text-success" id="stars-value"></span>					
+							</div>	
+						</h3>
+					</div>
+			    </form> 
+		</article>
+	</section>
+</div>
+<script>include ("Layout/footer.html", "body");</script>
+</body>
+</html >

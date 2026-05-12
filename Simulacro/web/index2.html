@@ -1,0 +1,33 @@
+<!doctype html>
+<head>
+	<script src= "/js/utils/include.js"> </script> <!-- Para hacer includes de código HTML en esta página -->
+	<script>include("Layout/head.html","head")</script>
+	<script src="/js/libs/bootstrap.min.js"></script>
+	<script src="js/libs/axios.min.js"></script> <!-- Librería para llamadas AJAX -->
+	<script src="js/index.js" type="module"> </script> <!-- Archivo de control .js externo -->
+	<script src="js/header.js" type="module"></script> <!-- Control acceso público/privado -->
+	<title>Recent photos</title>
+</head>
+<body>
+<header  class="container-fluid px-1 py-0">
+	<script>include ("Layout/header.html", "header");</script>
+	<div class="row">
+		<h4 class="text-center fw-light col-sm-10 m-0 p-0">
+			<i class="fa fa-clock-o"></i> Recent photos
+		</h4>
+		<small class="col-sm-2 text-end"><i class="fa fa-hand-pointer-o"> Click photos for details!</i></small>
+	</div>
+</header>
+
+<main class="container-fluid px-2 py-0"> <!-- Our photos will be here -->
+	<aside class="row px-2 m-0">
+		<div id="errors" class=""></div > <!-- Div de errores para peticiones Ajax a la API REST --> 
+	</aside>
+	<section id="divGallery" class="px-2 m-0">
+		<!-- Our rendered photos will be here -->
+	</section>	
+</main>
+<!-- Incrustar aquí cabecera común header.html con JavaScript -->
+<script>include ("Layout/footer.html", "body");</script>
+</body>
+</html >
