@@ -1,0 +1,66 @@
+{
+    "getAll": {
+        "description": "Gets all entries from 'books'",
+        "route": "/books",
+        "method": "GET",
+        "sql": "SELECT * FROM books",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "getById": {
+        "description": "Gets an entry from 'books' by its primary key",
+        "route": "/books/$bookId",
+        "method": "GET",
+        "sql": "SELECT * FROM books WHERE bookId = $bookId",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "create": {
+        "description": "Creates a new entry in 'books'",
+        "route": "/books",
+        "method": "POST",
+        "sql": "INSERT INTO books (title, author, releaseDate, numPages, imageUrl) VALUES ($title, $author, $releaseDate, $numPages, $imageUrl)",
+        "request_body_params": [
+            "title",
+            "author",
+            "releaseDate",
+            "numPages",
+            "imageUrl"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "update": {
+        "description": "Updates an existing entry in 'books' by its primary key",
+        "route": "/books/$bookId",
+        "method": "PUT",
+        "sql": "UPDATE books SET title = $title, author = $author, releaseDate = $releaseDate, numPages = $numPages, imageUrl = $imageUrl WHERE bookId = $bookId",
+        "request_body_params": [
+            "title",
+            "author",
+            "releaseDate",
+            "numPages",
+            "imageUrl"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "delete": {
+        "description": "Deletes an existing entry in 'books' by its primary key",
+        "route": "/books/$bookId",
+        "method": "DELETE",
+        "sql": "DELETE FROM books WHERE bookId = $bookId",
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    }
+}
