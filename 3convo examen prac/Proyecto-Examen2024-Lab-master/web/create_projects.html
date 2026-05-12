@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/axios.min.js"></script>
+    <script src="js/utils/include.js"></script>
+
+    <script src="js/create_projects.js" type="module"></script>
+
+    <title>Examen IISSI-2</title>
+</head>
+<body>
+    <div id="page-header"></div>
+
+    <aside class="row">
+        <div id="errors"></div>
+    </aside>
+
+    <div class="container mt-3">
+        <h2 class="text-center">Añadir o Modificar un proyecto</h2>
+        <hr class="mb-3">
+
+        <!--Formulario de edicion-->
+
+        <form id="formid">
+            <div class="form-group mb-2">
+                <label class="mb-2" for="name">Name:</label>
+                <input required type="text" class="form-control" id="name" placeholder="Name" name="name">
+            </div>
+            <div class="form-group mb-2">
+                <label class="mb-2" for="projectleader">Project Leader:</label>
+                <input required type="text" class="form-control" id="projectleader" placeholder="Project Leader" name="projectleader">
+            </div>
+            <div class="form-group mb-2">
+                <label class="mb-2" for="endDate">End Date:</label>
+                <input required type="date" class="form-control" id="endDate" placeholder="End Date" name="endDate">
+            </div>
+            <div class="form-group mb-2">
+                <label class="mb-2" for="budget">Budget:</label>
+                <input required type="number" class="form-control" id="budget" placeholder="Budget" name="budget">
+            </div>
+            <div class="form-group mb-2">
+                <label class="mb-2" for="description">Description:</label>
+                <input required type="text" class="form-control" id="description" placeholder="Description" name="description">
+            </div>
+            <div class="form-group mb-2">
+                <label class="mb-2" for="image">Imagen:</label>
+                <input required type="url" class="form-control" id="image" placeholder="imageUrl" name="image">
+            </div>
+
+            <div class="row">
+                <div class="col-md text-center mb-3">
+                    <button type="submit" class="btn btn-primary" id="register-button">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        include("header.html","#page-header");
+    </script>
+</body>
+</html>

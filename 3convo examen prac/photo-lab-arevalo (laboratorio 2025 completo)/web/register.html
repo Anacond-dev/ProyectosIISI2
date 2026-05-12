@@ -1,0 +1,98 @@
+<!doctype html>
+<head>
+	<script src= "/js/utils/include.js"> </script> <!-- Para hacer includes de código HTML en esta página -->
+	<script>include("Layout/head.html","head")</script>
+	<script src="/js/libs/bootstrap.min.js"></script>
+	<script src="./js/libs/axios.min.js"></script>
+	<script type="module" src="js/register.js"></script>
+	<title>Sign Up</title>
+</head>
+<body>
+<header  class="container-fluid p-0">
+	<script>include ("Layout/header.html", "header");</script>
+	<h4 class="text-center fw-light">
+		<i class="fa fa-sign-in"></i> Login
+	</h4>
+</header>
+
+<!--Esta pagina describe un formulario para crear un usuario nuevo-->
+
+<main class="container">
+	<form id="register-form"> <!-- Control del formulario. Se añade id, utilizado en register.js -->
+		<!--Creamos dos filas para el formulario una para el propio formulario y otra para los mensajes de errores-->
+		<aside class= "row">
+			<div id="errors" class="form-group col-sm"></div>
+		</aside>
+		<section class= "row">
+			<article class= " col-sm">
+				<!--Se indica un contenedor por cada grupo del formulario-->            
+				<div class="form-group">
+					<!--Con cada una de las etiquetas con el cnombre del campo para el que va dirigido-->
+					<label for="firstname-input">First name:</label>
+					<!--Exigimos que es requerido mediante required-->
+					<!--Describimos en su clase que es un control de formulario su id, su nombre y ademas podemos poner un placeholder que hara aparecer el nombre de dicho campo dentro del contenedor-->
+					<input type="text"  class= "form-control" id="firstname-input" name="firstName" required>
+				</div>
+				<div class="form-group">
+					<label for="lastname-input">Last name:</label>
+					<input type="text" class= "form-control" id="lastname-input" name="lastName" required>
+				</div>
+				<div class="form-group">
+					<label for="email-input">Email:</label>
+					<input type="text" class= "form-control" id="email-input" name="email" required>
+				</div>
+				<div class="form-group">
+					<label for="telephone-input">Telephone:</label>
+						<!--Aqui un pequeño select para elegir el prefijo del numero que vamos a introducir-->
+						<select name="prefix" id="prefix-input">
+							<option value="34">Spain (+34)</option>
+							<option value="1">USA (+1)</option>
+							<option value="other">Other</option>
+						</select>
+					<!--Podemos ver aqui que dentro de la etiqueta input podemos exigir un minimo y un maximo-->
+					<input type="number" min="0" max="999999999999" class= "form-control" id="telephone-input" name="telephone" required>
+				</div>
+			</article>
+
+			<!--En la parte de la derecha creamos una nueva columna para otros campos distintos-->
+
+			<article class= " col-sm"> 	
+				<div class="form-group">
+					<label for="username-input">Username:</label>
+					<input type="text" class= "form-control" id="username-input" name="username" required>
+				</div>
+				<div class="form-group">
+					<label for="password-input">Password:</label>
+					<input type="password" class= "form-control" id="password-input" name="password" required >
+				</div>
+				<div class="form-group">
+					<label for="password2-input">Repeat your password:</label>
+					<input type="password" class= "form-control" id="password2-input" name="password2" required>
+				</div>
+				<div class="form-group">
+					<label for="profile-url">Profile URL:</label>
+					<input type="text" class="form-control" id="profile-url" name="avatarUrl" placeholder="Avatar">
+				</div>
+			</article>				 
+		</section>
+		
+		<!--Finalmente aqui creamos una nueva fila en una seccion que contendra los botones para cancelar, que nos dirigira a la pagina principal de index.html y el boton de sign up para enviar y validar los datos de entrada-->
+		
+		<section class= "row mt-2">
+			<article class=" col-sm text-center">
+				<button type= "button" class= "btn btn-danger" onclick="window.location.href=`index.html`">
+					<i class="fa fa-home"></i>Cancel
+				</button>
+				<button type= "submit" class= "btn btn-primary">
+					<i class="fa fa-user-plus"></i>Sign Up
+				</button>
+			</article>
+		</section>
+
+	</form>	
+
+	
+</main>
+<script>include ("Layout/footer.html", "body");</script>
+</body>
+</html>

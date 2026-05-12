@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/axios.min.js"></script>
+    <script src="js/utils/include.js"></script>
+
+    <!--<script src="js/header.js" type="module"></script>-->
+    <script type="module" src="js/index.js"></script>
+
+    <title>Examen IISSI-2</title>
+</head>
+
+<body>
+    <div id="page-header"></div>
+
+    <div class="container">
+        <div id="errors"></div>
+
+        <!-- Sustituir el contenido de content por la visualización solicitada en el enunciado -->
+        <div id ="content" class="ratio ratio-16x9">
+            
+        </div>
+    </div>
+
+    <script>
+        include("header.html", "#page-header");
+        include("projects.html", "#content");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<head>
+	<script src= "/js/utils/include.js"> </script> <!-- Para hacer includes de código HTML en esta página -->
+	<script>include("Layout/head.html","head")</script>
+	<script src="/js/libs/bootstrap.min.js"></script>
+	<script src="js/libs/axios.min.js"></script> <!-- Librería para llamadas AJAX -->
+	<script src= "js/edit_photo.js" type="module"> </script> <!-- Archivo de control .js externo -->
+
+	<script src="../js/header.js" type="module"></script>
+	<title>Example page</title> 
+</head>
+<body>
+<header  class="container-fluid p-0">
+	<script>include ("Layout/header.html", "header");</script>
+	<h4 class="text-center fw-light">
+		<i class="fa fa-camera-retro  "></i> <span id="page-title">Photo upload</span>
+	</h4>
+</header>
+<main class="container p-0">
+	<aside class= "row">
+		<div id="errors" class="form-group col-sm"></div>
+	</aside>
+	<section class="row">	
+		<form id="form-photo-upload" class="col-md-6  ">
+			<section class="row">	
+				<div class="form-floating mb-3 mt-3">
+					<input 	required type="text" class="form-control " id="input-url" name="url"
+							placeholder="Photo URL">
+					<label for="input-url">URL:</label>
+				</div>
+				<div class="form-floating  mb-3 mt-3">
+					<input required type="text" class="form-control" id="input-title" name="title"
+							placeholder="Title">
+					<label for="input-title">Title:</label>
+				</div>
+				<div class="form-floating mb-3 mt-3">
+					<textarea class="form-control" id="input-description" name="description"
+							placeholder="Describe your image..." rows="4"></textarea>
+					<label for="input-description">Description:</label>
+				</div>
+				<div class="form-group col-md-9">
+					<label class="radio-inline">
+						<input type="radio" checked value="Public" class="form-check-input" id="Public_visibility" name="visibility">Public
+					</label>
+					<label class="radio-inline">
+						<input type="radio" value="Private" class="form-check-input" id="Private_visibility" name="visibility">Private
+					</label>						
+				</div>
+				<div class="form-group">
+					<span class="">
+						<button class="btn btn-secondary" onclick="window.history.back()">
+							<i class="fa fa-undo mr-1"></i><small>Undo</small>
+						</button>
+					</span>
+					<span class=" mr-2">
+						<button type="submit" class="btn btn-primary">
+							<i class="fa fa-send mr-1"></i><small>Send</small>
+						</button>
+					</span>
+				</div>	
+			</section>			
+		</form>
+		<figure class="col-md-6">
+			<img id="img-edit" src="images/placeholder-img.jpg" alt="Placeholder Imagen" class="img-fluid">
+		</figure>
+</main>
+<script>include ("Layout/footer.html", "body");</script>
+</body>
+</html>

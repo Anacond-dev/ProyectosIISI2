@@ -1,0 +1,42 @@
+<!doctype html>
+<head>
+	<script src="./js/libs/axios.min.js"></script>
+	<script src= "js/utils/include.js"> </script> <!-- Para hacer includes de código HTML en esta página -->
+	<script>include("Layout/head.html","head")</script> <!--Incluye head.html en en la etiqueta head-->
+	<script src="/js/libs/bootstrap.min.js"></script> <!--Incluye bootstrap en nuestro proyecto-->
+	<!-- Incluir librería Axios-->
+	
+	<script type="module" src="js/index.js"></script> <!-- Controlador de la vista -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+	<!--JS que maneja la cabecera-->
+
+	<script src="../js/header.js" type="module"></script>
+
+	<!-- Estilo para miniaturas -->
+	<title>Recent photos</title>
+</head>
+<body>
+<header  class="container-fluid p-0">
+	<script>include ("Layout/header.html", "header");</script> <!--Aqui añadimos lo que contenga nuestro header.html-->
+	<h4 class="text-center fw-light"> <!--centra el texto y le aplica una fuente con un peso ligero-->
+		<i class="fa fa-clock-o"></i> Recent photos <!--instancia una clase de font awesome y crea un reloj-->
+	</h4>
+</header>
+
+<main class="container-fluid p-0"> <!--container-fluid es un contenedor que ocupa todo en ancho de la pagina y p-0 no indica el padding-->
+	<aside class="row">
+		<div class="col-sm-3"> <!--Indica que tenemos una columna, que su anchura sera pequeña (sm), y ocupa la 3 columna de las 12 que hay-->
+			<small><i class="fa fa-hand-pointer-o"> Click photos for details!</i></small> <!--Declaramos otra clase font awesome en este caso una mano-->
+		</div>
+		<div id="errors" class="col-sm-9 p-0"></div > <!-- Div de errores para peticiones Ajax a la API REST --> 
+		<!--Destacar que volvemos a ocupar una columna pequeña en este caso la 9-->
+	</aside>
+	<section class="row text-center">
+		<div id="divGallery"></div>
+	</section>	
+</main>
+<!-- Incrustar aquí cabecera común header.html con JavaScript -->
+<script>include ("Layout/footer.html", "body");</script>
+</body>
+</html >

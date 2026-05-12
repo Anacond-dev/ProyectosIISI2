@@ -1,0 +1,78 @@
+<!doctype html>
+<head>
+	<script src= "/js/utils/include.js"> </script> <!-- Para hacer includes de código HTML en esta página -->
+	<script>include("Layout/head.html","head")</script>
+	<script src="/js/libs/bootstrap.min.js"></script>
+	<!-- Incluir librería Axios-->
+	<script src="./js/libs/axios.min.js"></script>
+	<script src="js/photo_detail.js" type="module"></script> <!-- Controlador de la vista -->
+	<link rel="stylesheet" type="text/css" href="css/style.css"> <!-- Estilo para miniaturas -->
+
+	<script src="../js/header.js" type="module"></script>
+	<title>Photo Detail</title>
+</head>
+<body>
+<header  class="container-fluid">
+	<!--Vemos como se mantiene la parte de la cabecera de la pagina que vuelve a llamarse mediante la funcion include-->
+	<script>include ("Layout/header.html", "header");</script>
+	<h4 class="text-center fw-light">
+		<i class="fa fa-camera-retro  "></i> Photo Detail
+	</h4>
+</header>
+
+<style>
+	.imagen{
+        object-fit: cover;
+	}
+</style>
+
+
+<main class="container">
+	<!--Se crea una fila superior unicamente para mostrar los errores-->
+	<aside class= "row">
+		<div id="errors" class="form-group col-sm"></div>
+	</aside>
+	<section class="row">
+		<!--Se crea justo debajo una fila con dos columnas (ocupan 6 columnas cada una) para mostrar la imagen y el resto de apartados-->	
+		<article id="main-photo" class="col-md-6"></article>
+		<article class="col-md-6">
+			<!--Indicamos que este contenedor va a ocupar las 12 columnas de esta subfila-->
+			<div class="com-md-12 ">
+				<!--Aqui se describe un boton que ocupara 3 columna, describimos que es secundario por lo que se mostrara  gris y ademas se añade un ligero margen a la dereña, se le añade un funcion onclick que permite regresar a la pagina previa-->
+				<button class="btn btn-secondary col-md-3 mr-1" onclick="window.history.back()">
+					<i class="fa fa-undo mr-2"></i>Back <!--Se le añade nombre al boton ademas del signo de retroceso (flecha circular)-->
+				</button>
+				<button class="btn btn-secondary col-md-3 mr-1 disabled" id="button-edit">
+					<i class="fa fa-edit mr-2"></i>Edit
+				</button>
+				<!--Este caso añadimos danger a la clase del boton lo que significa que aparecera de color rojo-->
+				<button class="btn btn-danger col-md-3 disabled" id="button-delete">
+					<i class="fa fa-trash mr-2"></i>Delete
+				</button>
+			</div>
+
+			<!--En el siguiente contenedor, que ocupara la siguiente subfila en su totalidad por debajo de la anterior-->
+			<!--Creamos un formulario con un margen hacia arriba-->
+			<form class="col-md-12 mt-2">
+				<!--Indicamos en la clase que es parte del formulario mediante form-control, mostramos que ocupara como 8 columnas, que el texto de su interior sera verde (text-success) y fw-bold el fondo sera totalmente blanco-->
+				<select id="rating-input" name="rating" class="form-control col-md-8 text-success fw-bold">
+					<option value="0">(0)☆☆☆☆☆</option>
+					<option value="1">(1)★☆☆☆☆</option>
+					<option value="2">(2)★★☆☆☆</option>
+					<option value="3">(3)★★★☆☆</option>
+					<option value="4">(4)★★★★☆</option>
+					<option value="5">(5)★★★★★</option>
+				</select>
+				<!--Añadimos un boton verde btn-success que ocupe el resto de columnas y tenga un margen de por encima-->
+				<!--Este margen provocara que las columnas restantes se coloquen por debajo de las otras dando la impresion de haberse creado una nueva fila-->
+				
+				<a class="btn btn-success col-md-3 mt-2" href="index.html">
+					<i class="fa fa-send mr-2"> Rate</i>
+				</a>
+			</form>	
+		</article>
+	</section>
+</div>
+<script>include ("Layout/footer.html", "body");</script>
+</body>
+</html >
