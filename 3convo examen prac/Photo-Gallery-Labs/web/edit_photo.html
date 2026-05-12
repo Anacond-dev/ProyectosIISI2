@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="/js/edit_photo.js" type="module"></script>
+    <script src="/js/libs/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/utils/include.js"></script>
+    <title>Edit Photos</title>
+</head>
+<body class="dark">
+    <div id="page-header"></div>
+    <div class="container">
+        <aside class= "row">
+            <div id="errors" class="form-group col-sm"></div>
+        </aside>
+        <div class="row">
+            <div class="col-md">
+                        <form id="form-photo-upload">
+            <div class="form-group">
+                <label for="input-url">URL:</label>
+                <input required type="text" class="form-control" id="input-url" name="url"  placeholder="Photo URL">
+            </div>
+
+            <div class="form-group">
+                <label for="input-title">Title:</label>
+                <input required type="text" class="form-control" id="input-title" name="title" placeholder="Title">
+            </div>
+
+            <div class="form-group">
+                <label for="input-description">Description:</label>
+                <textarea class="form-control" id="input-description" name="description" placeholder="Describe your image..." rows="4"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="input-visibility">Visibility:</label>
+                <select required class="form-control" id="input-visibility" name="visibility">
+                    <option value="Public">Public</option>
+                    <option value="Private">Private</option>
+                </select>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md text-center">
+                    <button type="submit" class="btn btn-primary" id="send-button">Send</button>
+                </div>
+                <div class="col-md text-center">
+                    <a href="index.html" class="btn btn-primary">Return</a>
+                </div>
+            </div>
+
+        </form>
+            </div>
+        </div>
+    </div>
+    <script>include("header.html","#page-header");</script>
+</body>
+</html>

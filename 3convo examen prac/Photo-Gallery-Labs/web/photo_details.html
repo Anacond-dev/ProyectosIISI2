@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,shrink-to-fit=no">
+
+    <!--Importaciones-->
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script src="/js/libs/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/renderers/photo_details.js" type="module"></script>
+
+    <title>Detalles de la foto</title>
+    <script src="/js/utils/include.js"></script>
+    <script src="js/libs/axios.min.js"></script>
+</head>
+<body class="dark">
+    <div class="container">
+        <div class="row text-center">
+
+            <div id="errors"></div>
+
+            <!--Foto junto a sus detalles-->
+
+            <div class="col-md" id="photo-details-column">
+                
+            </div>
+
+            <!--Para editar, eliminar o valorar la foto-->
+
+            <div class="col-md-3">
+                <div id="botones">
+                    <button id="button-edit" class="btn btn-primary">Edit this photo</button>
+                    <button id="button-delete" class="btn btn-danger">Delete this photo</button>
+                    <form>
+                        <div class="form-group">
+                            <label for="raiting-input">Rate this photo:</label>
+
+                            <!--Opciones de valoracion-->
+
+                            <select id="rating-input" name="rating" class="form-control">
+                                <option value="1">*</option>
+                                <option value="2">**</option>
+                                <option value="3">***</option>
+                                <option value="4">****</option>
+                                <option value="5">*****</option>
+                            </select>
+                            <button type="submit" class="btn btn-success" id="exito">Rate</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--Enlace para regresar a la galeria-->
+
+        <div class="row text-center">
+            <div class="col-md">
+                <a href="index.html" class="btn btn-primary" id="regreso">Return to the gallery</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

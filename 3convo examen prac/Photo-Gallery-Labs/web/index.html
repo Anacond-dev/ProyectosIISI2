@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+    <!--Importacion de archivos js y css-->
+
+    <script src="/js/utils/include.js"></script>
+    <!--<script>include("Layout/head.html","head")</script>-->
+    <script src="/js/libs/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <script src="js/index.js" type="module"></script>
+    <script src="/js/renderers/photos.js" type="module"></script>
+    <script src="js/libs/axios.min.js"></script>
+
+    <title>Photo Gallery</title>
+
+</head>
+
+<!--Bloque referente a la forma de las cartas que contienen las fotos-->
+
+<body class="dark">
+    <!--Cabecera de la pagina introducida por javasrcipt-->
+
+    <div id="page-header"></div>
+
+    <!--Contenido de la galeria hecho en bootstrap-->
+
+    <div id="gallery">
+
+        <div id="dom-test">
+        
+        </div>
+
+        <div id="errors"></div>
+
+        <div class="row text-center">
+            <div class="col-md">
+                <h3>Recent pictures</h3>
+            </div>
+            <hr>
+        </div>
+
+        <!--La galeria renderizada viene aqui-->
+
+        
+    </div>
+    <!--Aplicacion del script JS-->
+
+    <script>
+        include("header.html","#page-header");
+    </script>
+
+</body>
+</html>
+

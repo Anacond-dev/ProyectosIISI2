@@ -1,0 +1,126 @@
+
+/*Estilo de la carta que contiene la foto*/
+
+div.photo-block{
+    text-align: center;
+    border: 1px solid gray;
+    border-radius: 5%;
+}
+
+div.photo-title{
+    font-size: 140%;
+    font-family: Arial;
+    text-decoration: underline;
+}
+
+div.photo-score{
+    font-family:130%;
+    font-family:monospace;
+}
+
+/*Ocupa todo el ancho de la columna y su anchura sera automatica*/
+
+img.photo-image{
+    width: 100%;
+    height: auto;
+}
+
+/*Estilo de la pagina completa*/
+
+body.dark{
+    background-color: #222222;/*Color de la pagina*/
+    color:#eeeeee; /*Color del texto*/
+}
+
+/*Propiedades del grid*/
+
+.gallery-container{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+
+/*Cambia el color de los input y los select*/
+
+input, select{
+    background-color: #666666;
+    border-color: #999999;
+    color:white;
+}
+
+/*Altera estilo de las etiquetas label*/
+
+.input-group > label{
+    display:inline-block;
+    width: 200px;
+    text-align: right;
+}
+
+/*Establecemos un margen entre todos los contenedores*/
+
+.input-group{
+    margin-bottom: 0.5em;
+}
+
+/*Cambio de estilo de toda la cabecera*/
+
+div.title-block{
+    text-align: center;
+    padding-top:1%;
+    padding-bottom:1%;
+    background-color: #333333;
+}
+
+#title{
+    font-size: 300%;
+    text-decoration:none;
+    color:#BBBBBB;
+    font-family:sans-serif;
+    margin-bottom: 0;
+}
+
+#subtitle{
+    font-size: 120%;
+    font-style: italic;
+    color: #BBBBBB;
+    font-family: monospace;
+}
+
+/*Estilo de la barra de navegacion*/
+
+div.navigation > a{
+    color:white;
+    font-size: 120%;
+    background-color: #555555;
+    font-family:monospace;
+    text-decoration: none;
+    display:inline-block;
+    min-width: 150px;
+}
+
+/*Añadir margen a los botones*/
+
+#botones{
+    margin-top: 10%;
+}
+
+#exito{
+    margin-top: 5%;
+}
+
+#regreso{
+    margin-top:3%;
+}
+
+/*botones del html de registro*/
+
+#botones2{
+    margin-top: 2%;
+}
+
+/*Cambio del tamaño de las fotos de perfil*/
+
+img.photo-user-avatar{
+    max-width: 25px;
+    height: auto;
+    border-radius: 50%;
+}
