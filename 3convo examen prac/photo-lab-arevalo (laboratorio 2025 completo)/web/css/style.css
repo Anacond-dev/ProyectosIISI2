@@ -1,8 +1,0 @@
-/*
-    Estilo para imágenes miniatura
-*/
-img.photo-avatarUrl {
-    width: 25px;
-    height: auto;
-    border-radius: 50%;
-}
