@@ -3,6 +3,11 @@
     Mar/2024
 */
 "use strict"; // Control estricto de errores
+
+//importamos sessionManager
+
+import { sessionManager } from "./utils/session.js";
+
 // import { galleryPhotos } from "../js/utils/data.js";
 import { photosAPI_auto } from "./api/_photos.js"; // Importar módulo API de acceso RESTful a photos
 import { messageRenderer } from "./renderers/messages.js";
@@ -46,7 +51,7 @@ let currentPhoto = null; // Para controlar Inserción o edición
     event.preventDefault(); // Cancelar el submit
     // alert ("Tengo control del Submit!"); // Comprobación de enlace a vista index.html
     let fData = new FormData(event.target); // Crea formData con el formulario que provoca el submit
-    fData.append("userId",1); // Usuario por defecto
+    fData.append("userId",sessionManager.getLoggedId()); //Ponemos el id del usuario que ha subido la foto
     let ahora = (new Date()).toLocaleString("ja-JP").replaceAll("/","-");
 	fData.append("date", ahora); // Add the current date
 

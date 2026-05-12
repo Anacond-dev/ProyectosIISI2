@@ -42,11 +42,11 @@
 				<button class="btn btn-secondary col-md-3 mr-1" onclick="window.history.back()">
 					<i class="fa fa-undo mr-2"></i>Back <!--Se le añade nombre al boton ademas del signo de retroceso (flecha circular)-->
 				</button>
-				<button class="btn btn-secondary col-md-3 mr-1" id="button-edit">
+				<button class="btn btn-secondary col-md-3 mr-1 disabled" id="button-edit">
 					<i class="fa fa-edit mr-2"></i>Edit
 				</button>
 				<!--Este caso añadimos danger a la clase del boton lo que significa que aparecera de color rojo-->
-				<button class="btn btn-danger col-md-3" id="button-delete">
+				<button class="btn btn-danger col-md-3 disabled" id="button-delete">
 					<i class="fa fa-trash mr-2"></i>Delete
 				</button>
 			</div>
@@ -65,9 +65,10 @@
 				</select>
 				<!--Añadimos un boton verde btn-success que ocupe el resto de columnas y tenga un margen de por encima-->
 				<!--Este margen provocara que las columnas restantes se coloquen por debajo de las otras dando la impresion de haberse creado una nueva fila-->
-				<button type= "submit" class= "btn btn-success col-md-3 mt-2">
-						<i class="fa fa-send mr-2"></i>Rate
-				</button>
+				
+				<a class="btn btn-success col-md-3 mt-2" href="index.html">
+					<i class="fa fa-send mr-2"> Rate</i>
+				</a>
 			</form>	
 		</article>
 	</section>

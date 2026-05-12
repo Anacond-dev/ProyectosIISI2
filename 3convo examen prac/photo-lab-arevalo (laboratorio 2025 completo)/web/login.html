@@ -1,9 +1,15 @@
 <!doctype html>
 <head>
+	<meta name= "viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel= "icon" href= "/images/favicon.ico">
+	<link rel= "stylesheet" href= "./css/bootstrap.min.css">
+	<link rel="stylesheet" href= "./css/font-awesome.min.css">
 	<script src= "/js/utils/include.js"> </script> <!-- Para hacer includes de código HTML en esta página -->
-	<script>include("Layout/head.html","head")</script>
-	<script src="/js/libs/bootstrap.min.js"></script>
-	<script src="./js/libs/axios.min.js"></script>
+	
+	<script src="./js/libs/bootstrap.min.js"></script>
+	<script src="../web//js/login.js" type="module"></script>
+	<script src="../web/js/libs/axios.min.js"></script>
+	
 	<title>Login</title>
 </head>
 <body>
@@ -28,13 +34,14 @@
 			<!--Ocupamos dos columnas diferentes para el formulario una para el usuario y otra para la contraseña-->
 			<article class="col-sm">
 				<div class="form-group">
-					<label for="email">Username:</label>
+					<label for="username">Username:</label>
 					<div class="input-group">
 						<input required type="text" class="form-control" id="username" name="username"
 							placeholder="Username">
 					</div>
 				</div>
 			</article>
+			<!--La contraseña no puede ser una cadena de numeros porque el metodo de login no puede hacerle el hash debidamente-->
 			<article class="col-sm">
 				<div class="form-group">
 					<label for="password">Password:</label>

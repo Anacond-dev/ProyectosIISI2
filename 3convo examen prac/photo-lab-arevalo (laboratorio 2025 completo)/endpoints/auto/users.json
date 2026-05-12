@@ -33,7 +33,7 @@
             "password",
             "avatarUrl"
         ],
-        "auth_required": false,
+        "auth_required": true,
         "allowed_roles": [
             "*"
         ]

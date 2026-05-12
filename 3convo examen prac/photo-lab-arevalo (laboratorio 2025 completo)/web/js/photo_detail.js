@@ -12,6 +12,8 @@ import { parseHTML } from "./utils/parseHTML.js";
 
 import { messageRenderer } from "./renderers/messages.js";
 
+import { sessionManager } from "./utils/session.js";
+
 const urlParams = new URLSearchParams(window.location.search); // Objeto query de la ventana
 const photoId = urlParams.get('photoId'); // Extrae el parámetro
 const deleteBtn = document.querySelector("#button-delete");
@@ -26,6 +28,16 @@ const editBtn = document.querySelector("#button-edit");
         // let photo = await photosAPI_auto.getById(photoId); // Recupera de la BD la photo con PK photoId
         let photo = await photosAPI_auto.getById(photoId);//Justo en esta linea no se ejecuta correctamente el codigo debido a que no encuentra el id de la foto // Recupera de la BD la photo con PK photoId
         let container = document.getElementById("main-photo"); // Recuperar div photo-detail
+
+        //Aqui pondre los ifs para activar y desactivar las opciones de editado
+
+        if(sessionManager.isLogged()){
+            let botonEdicion = document.getElementById("button-edit");
+            let botonEliminacion = document.getElementById("button-delete");
+
+            botonEdicion.classList.remove("disabled");
+            botonEliminacion.classList.remove("disabled");
+        }
 
         let imagen = parseHTML(`<img src="${photo.url}" class="imagen img-fluid">`);
 
@@ -53,7 +65,11 @@ const editBtn = document.querySelector("#button-edit");
     }
  }
 
-    function handleEdit() {
+function handleEdit() {
     //Nos el objeto windows podemos usarlo para iteractuar con la url de la pagina actual
-	window.location.href = "edit_photo.html?photoId=" + photoId;
+    if(sessionManager.isLogged()){
+
+
     }
+	window.location.href = "edit_photo.html?photoId=" + photoId;
+}
