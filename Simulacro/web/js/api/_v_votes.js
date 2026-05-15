@@ -19,9 +19,14 @@ const v_votesAPI_auto = {
         return response.data;
     },
 
-    getavgValueByPId: async function(){
+    getavgValueByPId: async function(photoId){
         let response = await axios.get(`${BASE_URL}/v_votes/${photoId}`, requestOptions);
         return response.data[0];
+    },
+
+    deleteThisUserVotes: async function(userId,photoId){
+        let response = await axios.delete(`${BASE_URL}/v_votes/${userId}/${photoId}`, requestOptions);
+        return response.data;
     }
 };
 

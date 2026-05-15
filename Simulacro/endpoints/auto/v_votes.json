@@ -18,5 +18,16 @@
         "allowed_roles": [
             "*"
         ]
+    },
+
+    "deleteThisUserVotes": {
+        "description": "Deletes an existing entry in 'votes' by its primary key of the current user",
+        "route": "/v_votes/$userId/$photoId",
+        "method": "DELETE",
+        "sql": "DELETE FROM v_votes WHERE userId = $userId && photoId = $photoId" ,
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
     }
 }

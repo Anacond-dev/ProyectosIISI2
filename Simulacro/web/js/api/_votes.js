@@ -41,11 +41,6 @@ const votesAPI_auto = {
     delete: async function(voteId) {
         let response = await axios.delete(`${BASE_URL}/votes/${voteId}`, requestOptions);
         return response.data;
-    },
-
-    deleteThisUserVotes: async function(userId,photoId){
-        let response = await axios.delete(`${BASE_URL}/votes/${userId}/${photoId}`, requestOptions);
-        return response.data;
     }
 };
 
