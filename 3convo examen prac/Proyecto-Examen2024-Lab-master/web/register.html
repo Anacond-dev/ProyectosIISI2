@@ -14,9 +14,9 @@
     <script src="js/utils/include.js"></script>
 
     <script src="js/header.js" type="module"></script>
-    <script src="js/login.js" type="module"></script>
+    <script src="js/register.js" type="module"></script>
 
-    <title>Login</title>
+    <title>Register</title>
 </head>
 
 <body>
@@ -27,13 +27,13 @@
 
         <div class="row">
             <div class="col-md text-center">
-                <h3>Login</h3>
+                <h3>Register</h3>
             </div>
         </div>
 
         <hr>
 
-        <form id="login-form">
+        <form id="register-form">
             <div class="row">
                 <div class="col-md mb-3">
                     <label for="username-input">Username:</label>
@@ -43,6 +43,30 @@
                 <div class="col-md mb-3">
                     <label for="password-input">Password:</label>
                     <input type="password" class="form-control" id="password-input" name="password" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md mb-3">
+                    <label for="fullname-input">Full Name:</label>
+                    <input type="text" class="form-control" id="fullname-input" name="fullName" required>
+                </div>
+
+                <div class="col-md mb-3">
+                    <label for="avatarurl-input">Url de avatar:</label>
+                    <input type="text" class="form-control" id="avatarurl-input" name="avatarUrl" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md mb-3">
+                    <label for="city-input">City:</label>
+                    <input type="text" class="form-control" id="city-input" name="city" required>
+                </div>
+
+                <div class="col-md mb-3">
+                    <label for="age-input">Edad:</label>
+                    <input type="text" class="form-control" id="age-input" name="age" required>
                 </div>
             </div>
 

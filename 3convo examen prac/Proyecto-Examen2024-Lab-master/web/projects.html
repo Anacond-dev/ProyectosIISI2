@@ -1,9 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/axios.min.js"></script>
+    <script src="js/utils/include.js"></script>
+
+    <script type="module" src="js/index.js"></script>
+    <script src="js/header.js" type="module"></script>
+    <title>Document</title>
+</head>
 <body>
-    <div class="container py-4">
+    
+</body>
+</html>
+<body>
+
+    <div id="page-header"></div>
+
+    <div class="container py-2">
         <h2 class="text-center mb-4">Proyectos</h2>
+
+        <div id="errors"></div>
 
         <div id="divGallery"></div>
     </div>
+
+    <script>
+        include("header.html","#page-header");
+    </script>
 </body>
 </html>

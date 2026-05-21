@@ -2,6 +2,8 @@
 
 import { parseHTML } from "/js/utils/parseHTML.js";
 
+//La clase que permite que se vean las cartas asi es d-flex align-items-center
+
 const projectsRenderer = {
     asCard: function(project){
         let html = `<div class="card mb-3 p-3">

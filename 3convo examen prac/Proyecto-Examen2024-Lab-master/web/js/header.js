@@ -6,7 +6,8 @@ import { sessionManager } from "/js/utils/session.js";
 const userLink = document.getElementById("showUsername");
 const logoutButton = document.getElementById("logout-button");
 const headerLogin = document.getElementById("header-login");
-const headerLogout = document.getElementById("header-logout");
+const headerLogout = document.getElementById("logout-button");
+const headerRegister = document.getElementById("register-button");
 
 function main() {
     showUser();
@@ -40,8 +41,9 @@ function hideHeaderOptions() {
     // Hide the appropriate options
     if (sessionManager.isLogged()) {
         headerLogin.style.display = "none";
+        headerRegister.style.display = "none";
     } else {
-        headerLogout.style.display = "none";
+        headerLogout.style.display = "none"; //Debemos de cambiar el estilo del boton no del link
     }
 }
 

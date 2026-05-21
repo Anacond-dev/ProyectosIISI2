@@ -3,17 +3,45 @@
 import { messageRenderer } from "./renderers/messages.js";
 import { validateProject } from "./validators/project_validator.js";
 import { projectsAPI_auto } from "./api/_projects.js";
+import { sessionManager } from "./utils/session.js";
 
-let projectId = null;
+let urlParams = new URLSearchParams(window.location.search);
+let projectId = urlParams.get('id');
+
+//let projectId = null;
 
 // Asegurarse de que el documento está completamente cargado
 document.addEventListener("DOMContentLoaded", function() {
 
-    projectId = getUrlParameter("id");
+    if(projectId !== null){
+        loadCurrentProject();
+    }
 
     // Adjuntar el evento al formulario
     document.getElementById("formid").addEventListener("submit", handleFormSubmit);
 });
+
+async function loadCurrentProject(){
+    let nombre = document.getElementById("name");
+    let liderproyecto = document.getElementById("projectleader");
+    let fechafinal = document.getElementById("endDate");
+    let presupuesto = document.getElementById("budget");
+    let descripcion = document.getElementById("description");
+    let imagen = document.getElementById("image");
+
+    //pageTitle.textContent = "Editing a project #"+projectId;
+    try{
+        let currentproject = await projectsAPI_auto.getById(projectId);
+        nombre.value = currentproject.name;
+        liderproyecto.value = currentproject.projectleader;
+        fechafinal.value = currentproject.endDate;
+        presupuesto.value = currentproject.budget;
+        descripcion.value = currentproject.description;
+        imagen.value = currentproject.image;
+    }catch(err){
+        console.error(err);
+    }
+}
 
 function getUrlParameter(name){
     const url = window.location.search;
@@ -46,7 +74,11 @@ async function handleFormSubmit(e) {
             if(projectId){
                 response = await projectsAPI_auto.update(formData, projectId);
                 messageRenderer.showSuccessMessage("Proyecto actualizado con exito")
-            }else{
+            }else{//Aqui añadimos el id de usuario
+                let userId = sessionManager.getLoggedId();
+                console.log(userId);
+                console.log(formData.values());//Comprobar que este el projectleader
+                formData.append("userId",userId);
                 response = await projectsAPI_auto.create(formData);
                 messageRenderer.showSuccessMessage("Proyecto registrado con éxito");
             }

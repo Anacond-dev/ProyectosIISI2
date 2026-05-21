@@ -17,7 +17,7 @@ async function loadprojects(){
 
         for (let project of projects){
             let card = projectsRenderer.asCard(project);
-            divGallery.appendChild(card)
+            divGallery.appendChild(card);
         }
     }catch(err){
         messageRenderer.showErrorMessage("Error",err);
