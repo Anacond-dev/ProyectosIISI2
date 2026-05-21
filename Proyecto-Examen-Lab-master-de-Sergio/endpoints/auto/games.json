@@ -1,0 +1,68 @@
+{
+    "getAll": {
+        "description": "Gets all entries from 'games'",
+        "route": "/games",
+        "method": "GET",
+        "sql": "SELECT * FROM games",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "getById": {
+        "description": "Gets an entry from 'games' by its primary key",
+        "route": "/games/$gameId",
+        "method": "GET",
+        "sql": "SELECT * FROM games WHERE gameId = $gameId",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "create": {
+        "description": "Creates a new entry in 'games'",
+        "route": "/games",
+        "method": "POST",
+        "sql": "INSERT INTO games (userId, title, developer, releaseDate, imageUrl, reviewScore) VALUES ($userId, $title, $developer, $releaseDate, $imageUrl, $reviewScore)",
+        "request_body_params": [
+            "userId",
+            "title",
+            "developer",
+            "releaseDate",
+            "imageUrl",
+            "reviewScore"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "update": {
+        "description": "Updates an existing entry in 'games' by its primary key",
+        "route": "/games/$gameId",
+        "method": "PUT",
+        "sql": "UPDATE games SET userId = $userId, title = $title, developer = $developer, releaseDate = $releaseDate, imageUrl = $imageUrl, reviewScore = $reviewScore WHERE gameId = $gameId",
+        "request_body_params": [
+            "userId",
+            "title",
+            "developer",
+            "releaseDate",
+            "imageUrl",
+            "reviewScore"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "delete": {
+        "description": "Deletes an existing entry in 'games' by its primary key",
+        "route": "/games/$gameId",
+        "method": "DELETE",
+        "sql": "DELETE FROM games WHERE gameId = $gameId",
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    }
+}

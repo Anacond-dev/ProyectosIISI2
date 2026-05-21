@@ -1,0 +1,152 @@
+
+### This is an auto-generated test suite, it needs to be completed with valid data.
+### These are not all tests you need, more of them should be created to evaluate the functional
+### requirements of your project. These tests only test the CRUD endpoints of the entity.
+### Silence is a DEAL research team project, more info about us in https://deal.us.es
+@BASE = http://127.0.0.1:8081/api/v1
+
+### Auxiliary query
+### Positive test
+### Test 00: Get all existing games
+### This query is used in several of the below tests it should be executed first.
+# @name games
+GET {{BASE}}/games
+
+### Login a(n) users and save the generated token 
+### This token is used in several of the below tests it should be executed second.
+# @name login
+POST {{BASE}}/login 
+Content-Type: application/json 
+
+{ 
+	"username": ###REPLACE###,
+	"password": ###REPLACE###
+}
+
+###
+@token = {{login.response.body.sessionToken}}
+
+
+### TESTS BEGIN
+
+### Test 01: Get one existing games by its id.
+### positive test 
+@gamId = {{games.response.body.0.gameId}}
+GET {{BASE}}/games/{{gamId}} 
+Content-Type: application/json 
+
+
+### Test 02: Try get one existing games by its nonexistent id.
+### negative test 
+GET {{BASE}}/games/999999999
+Content-Type: application/json 
+
+
+### Test 03: Add a new games successfully
+### Positive test 
+### We assume that the token has been aquired by the login request.
+# @name newgames
+POST {{BASE}}/games 
+Content-Type: application/json 
+Token: {{token}} 
+
+{
+	"userId": ###REPLACE###,
+	"title": ###REPLACE###,
+	"developer": ###REPLACE###,
+	"releaseDate": ###REPLACE###,
+	"imageUrl": ###REPLACE###,
+	"reviewScore": ###REPLACE###
+} 
+
+### Check the created games
+
+@newgamesid = {{newgames.response.body.lastId}}
+GET {{BASE}}/games/{{newgamesid}}
+Content-Type: application/json 
+
+### Test 04: Add a new games without a session token
+### Negative test 
+POST {{BASE}}/games 
+Content-Type: application/json 
+
+{ 
+	"userId": ###REPLACE###,
+	"title": ###REPLACE###,
+	"developer": ###REPLACE###,
+	"releaseDate": ###REPLACE###,
+	"imageUrl": ###REPLACE###,
+	"reviewScore": ###REPLACE###
+}
+
+### Test 05: Modify an existing games 
+### Positive test 
+@gamId = {{games.response.body.0.gameId}} 
+PUT {{BASE}}/games/{{gamId}} 
+Content-Type: application/json 
+Token: {{token}} 
+
+{ 
+	"userId": ###REPLACE###,
+	"title": ###REPLACE###,
+	"developer": ###REPLACE###,
+	"releaseDate": ###REPLACE###,
+	"imageUrl": ###REPLACE###,
+	"reviewScore": ###REPLACE###
+}
+
+### Check the modified games
+
+GET {{BASE}}/games/{{newgamesid}}
+Content-Type: application/json 
+
+### Test 06: Try to modify an existing games without a session token
+### Negative test
+@gamId = {{games.response.body.0.gameId}}
+PUT {{BASE}}/games/{{gamId}}
+Content-Type: application/json
+
+{
+	"userId": ###REPLACE###,
+	"title": ###REPLACE###,
+	"developer": ###REPLACE###,
+	"releaseDate": ###REPLACE###,
+	"imageUrl": ###REPLACE###,
+	"reviewScore": ###REPLACE###
+}
+
+### Test 07: Delete an existing games
+### Positive test
+
+### Create a new games, which we will delete
+# @name createdgamToDelete
+POST {{BASE}}/games
+Content-Type: application/json
+Token: {{token}}
+
+{
+	"userId": ###REPLACE###,
+	"title": ###REPLACE###,
+	"developer": ###REPLACE###,
+	"releaseDate": ###REPLACE###,
+	"imageUrl": ###REPLACE###,
+	"reviewScore": ###REPLACE###
+}
+
+### Check the created games
+@gamdelId = {{createdgamToDelete.response.body.lastId}}
+GET {{BASE}}/games/{{gamdelId}}
+Content-Type: application/json 
+
+### Delete the games
+DELETE {{BASE}}/games/{{gamdelId}}
+Token: {{token}}
+
+### Check the deleted games
+GET {{BASE}}/games/{{gamdelId}}
+Content-Type: application/json 
+
+### Test 08: Try to delete a games without a session token
+### Negative test
+DELETE {{BASE}}/games/{{gamId}}
+

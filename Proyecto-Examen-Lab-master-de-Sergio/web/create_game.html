@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Game</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/axios.min.js"></script>
+    <script src="js/utils/include.js"></script>
+
+    <script src="js/header.js" type="module"></script>
+    <script src="js/create_game.js" type="module"></script>
+</head>
+
+<body>
+    <div id="page-header"></div>
+    <div id="errors"></div>
+
+    <form id="form-game-create">
+        <div class="form-group">
+            <label for="input-image-url">URL:</label>
+            <input required type="text" class="form-control text-light bg-dark" id="input-image-url" name="imageUrl"
+                placeholder="Game image URL">
+        </div>
+        <div class="form-group">
+            <label for="input-title">Title:</label>
+            <input required type="text" class="form-control text-light bg-dark" id="input-title" name="title"
+                placeholder="Title">
+        </div>
+        <div class="form-group">
+            <label for="input-developer">Desarrollador:</label>
+            <input required type="text" class="form-control text-light bg-dark" id="input-developer" name="developer"
+                placeholder="Desarrollador"></input>
+        </div>
+
+        <div class="form-group">
+            <label for="input-release-date">Fecha:</label>
+            <input required type="date" class="form-control text-light bg-dark" id="input-release-date"
+                name="releaseDate">
+        </div>
+
+        <div class="form-group">
+            <label for="input-review-score">Nota:</label>
+            <input required type="number" min="0" max="100" class="form-control text-light bg-dark"
+                id="input-review-score" name="reviewScore"
+                placeholder="Nota"></input>
+        </div>
+
+        <div class="row">
+            <div class="col-md text-center">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        include("header.html", "#page-header");
+    </script>
+</body>
+
+</html>
