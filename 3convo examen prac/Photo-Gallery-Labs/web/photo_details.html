@@ -15,8 +15,10 @@
     <title>Detalles de la foto</title>
     <script src="/js/utils/include.js"></script>
     <script src="js/libs/axios.min.js"></script>
+    <script src="/js/header.js" type="module"></script>
 </head>
 <body class="dark">
+    <div id="page-header"></div>
     <div class="container">
         <div class="row text-center">
 
@@ -62,5 +64,8 @@
             </div>
         </div>
     </div>
+    <script>
+        include("header.html","#page-header");
+    </script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 import { messageRenderer } from "./renderers/messages.js";
 import { userValidator } from "./validators/users.js";
 import { usersAPI_auto } from "./api/_users.js";
+import { authAPI_auto } from "./api/_auth.js"; //Para hacer los registros y los logueos utilizar esta api no la de los users
 
 document.addEventListener("DOMContentLoaded", function() {
     // Capturar el clic del botón
@@ -51,15 +52,8 @@ async function handleSubmitRegister(event){
         }
     } else {
         try {
-            // Corrección del nombre del campo Username -> username (minúsculas)
-            if (formData.has("Username")) {
-                let usernameValue = formData.get("Username");
-                formData.delete("Username");
-                formData.append("username", usernameValue);
-            }
 
-            // Intentar crear el usuario y manejar la respuesta
-            let response = await usersAPI_auto.create(formData);
+            await authAPI_auto.register(formData);
             
             // Mostrar mensaje de éxito
             messageRenderer.showSuccessMessage("User registered successfully!");

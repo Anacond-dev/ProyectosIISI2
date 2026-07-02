@@ -11,8 +11,13 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/register.js" type="module"></script>
     <script src="/js/utils/include.js"></script>
+    <script src="/js/header.js" type="module"></script>
+    <script src="./js/libs/axios.min.js"></script>
     <title>Register</title>
 </head>
+<div id="page-header">
+
+</div>
 <body class="dark">
     <div class="container">
         <div class="row text-center">
@@ -44,14 +49,14 @@
                     </div>
                     <div class="form-group">
                         <label for="phoneNumber-input">Phone number:</label>
-                        <input type="text" class="form-control text-light bg-dark" id="phoneNumber-input" name="phoneNumber" placeholder="Phone Number" required>
+                        <input type="number" class="form-control text-light bg-dark" id="phoneNumber-input" name="telephone" placeholder="Phone Number" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md">
                         <div class="form-group">
                             <label for="Username-input">Username:</label>
-                            <input type="text" class="form-control text-light bg-dark" id="Username-input" name="Username" placeholder="Username" required>
+                            <input type="text" class="form-control text-light bg-dark" id="Username-input" name="username" placeholder="Username" required>
                         </div>
                     </div>
                     <div class="col-md">
@@ -77,5 +82,9 @@
             </div>
         </div>
     </div>
+
+   <script>
+        include("header.html","#page-header");
+   </script> 
 </body>
 </html>

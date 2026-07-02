@@ -7,8 +7,21 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script src="/js/utils/include.js"></script>
-    <title>Edit Photos</title>
+    <script src="/js/header.js" type="module"></script>
+    <title id="page-title">Edit Photos</title>
 </head>
+
+<!--Estilos creados en bootstrap, si se quiere aplicar con css en otro archivo html se pueden ver con inspeccionar y al copiarlos directamente se aplican-->
+
+<style>
+    .form-control{
+        --bs-bg-opacity: 1;
+        background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+        --bs-text-opacity: 1;
+        color:rgba(var(--bs-light-rgb), var(--bs-text-opacity)) !important;
+    }
+</style>
+
 <body class="dark">
     <div id="page-header"></div>
     <div class="container">

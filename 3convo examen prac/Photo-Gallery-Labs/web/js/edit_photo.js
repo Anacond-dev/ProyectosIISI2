@@ -63,7 +63,7 @@ async function loadCurrentPhoto(){
     let descriptionInput = document.getElementById("input-description");
     let visibilityInput = document.getElementById("input-visibility");
 
-    pageTitle.textContent = "Editing photo";
+    pageTitle.innerHTML = "Editing photo";
 
     try{
         currentPhoto = await photosAPI_auto.getById(photoId);

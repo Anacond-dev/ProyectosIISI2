@@ -3,9 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <!--Recordar siempre importar todas las librerias-->
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/libs/bootstrap.min.js"></script>
+    <script src="/js/utils/include.js"></script>
+    <script src="/js/libs/axios.min.js"></script>
+    <script src="/js/login.js" type="module"></script>
+    <script src="/js/header.js" type="module"></script>
+
+    <title>Login</title>
 </head>
-<body>
-    <h1>Pagina de login</h1>
+<body class="dark">
+    <div id="page-header"></div>
+    <div class="container mt-2">
+        <div class="row text-center">
+            <div class="col-md-">
+                <h1>Login</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <form id="login-form">
+            <aside class="row">
+                <div id="errors" class="form-group col-sm">
+                </div>
+            </aside>
+            <div class="row">
+                <hr class="mx-2">
+                <div class="col-md">
+                    <div class="form-group">
+                        <label for="username-input">Username:</label>
+                        <input type="text" class="form-control text-light bg-dark" id="username-input" name="username" placeholder="Username" required>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-group">
+                        <label for="password-input">Password:</label>
+                        <input type="password" class="form-control text-light bg-dark" id="password-input" name="password" placeholder="Password" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md text-center">
+                    <button type="submit" class="btn btn-primary mt-3">
+                        Login
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        include("header.html","#page-header");
+    </script>
 </body>
 </html>
