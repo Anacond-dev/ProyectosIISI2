@@ -2,36 +2,29 @@
 
 import { photosAPI_auto } from "/js/api/_photos.js";
 import { messageRenderer } from "/js/renderers/messages.js";
-/*
-document.addEventListener("DOMContentLoaded", function() {
-    // Capturar el clic del botón
-    document.getElementById("send-button").addEventListener("click", function() {
-        // Obtener el formulario
-        let registerForm = document.getElementById("form-photo-upload");
-        
-        // Desencadenar el evento submit del formulario
-        registerForm.dispatchEvent(new Event("submit"));
-    });
-});
-*/
+import { sessionManager } from "./utils/session.js";
+
+let urlParams = new URLSearchParams(window.location.search);
+let photoId = urlParams.get("photoId");
+
+
 async function main() {
     let registerForm = document.getElementById("form-photo-upload");
-    registerForm.onsubmit = handleSubmitPhoto;
-    let urlParams = new URLSearchParams(window.location.search);
-    let photoId = urlParams.get("photoId");
-   
 
     if(photoId !== null){
         loadCurrentPhoto();
     }
+
+    registerForm.onsubmit = handleSubmitPhoto;
 }
 
 async function handleSubmitPhoto(event){
-    let currentPhoto = null;
-    event.preventDefault();
 
+    event.preventDefault();
     let form = event.target;
     let formData = new FormData(form);
+
+    let currentPhoto = (photoId !== 0) ? await photosAPI_auto.getById(photoId) : null;
 
     if (currentPhoto === null){
         formData.append("userId",1);
@@ -44,19 +37,26 @@ async function handleSubmitPhoto(event){
             messageRenderer.showErrorAsAlert(err.response.data.message);
         }
     }else{
-        formData.append("userId",currentPhoto.userId);
-        formData.append("date",currentPhoto.date);
+
+        formData.append("userId",sessionManager.getLoggedId());
+
+        //Aqui crearemos un objeto de tipo Date y lo pasaremos a string
+
+        let today = new Date().toISOString().slice(0, 10);
+
+        formData.append("date",today);
 
         try{
             await photosAPI_auto.update(formData, photoId);
-            window.location.href = `photo_detail.html?photoId=${photoId}`;
+            window.location.href = "index.html";
         } catch(err){
-            messageRenderer.showErrorAsAlert(err.response.data.message);
+            console.error(err);
         }
     }
 }
 
 async function loadCurrentPhoto(){
+    let currentPhoto = await photosAPI_auto.getById(photoId);
     let pageTitle = document.getElementById("page-title");
     let urlInput = document.getElementById("input-url");
     let titleInput = document.getElementById("input-title");
@@ -66,13 +66,12 @@ async function loadCurrentPhoto(){
     pageTitle.innerHTML = "Editing photo";
 
     try{
-        currentPhoto = await photosAPI_auto.getById(photoId);
         urlInput.value = currentPhoto.url;
         titleInput.value = currentPhoto.title;
         descriptionInput.value = currentPhoto.description;
         visibilityInput.value = currentPhoto.visibility;
     }catch(err){
-        messageRenderer.showErrorMessage(err.response.data.message);
+        console.error(err);
     }
 }
 

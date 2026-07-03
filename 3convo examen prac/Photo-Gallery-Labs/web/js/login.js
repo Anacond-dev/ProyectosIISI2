@@ -24,7 +24,7 @@ async function sendLogin(formData){
         //Tened mucho cuidado aqui authAPI_auto devuelve un Object con sessiontokens y otro object con la informacion de usuario
         //Es necesario en el sessionManager.login añadir el nombre de usuario para eso acceder al objeto user y despues username
         let loginData = await authAPI_auto.login(formData);
-        sessionManager.login(loginData.sessionToken, loginData.user.username);
+        sessionManager.login(loginData.sessionToken, loginData.user);
         window.location.href = "index.html";
     }catch (error){
         messageRenderer.showErrorMessage(error.response.data.message);

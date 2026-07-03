@@ -16,8 +16,8 @@ function main(){
 }
 
 async function handleHeader(){
-    try{
-        let name = sessionManager.getLoggedUser();
+    try{//Obtenemos el username del JSON
+        let name = sessionManager.getLoggedUser().username;
         navitem.innerText = "@"+name;
     }catch(err){
         console.error(err);
