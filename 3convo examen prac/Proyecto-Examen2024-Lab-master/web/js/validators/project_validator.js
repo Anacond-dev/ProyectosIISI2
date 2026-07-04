@@ -6,13 +6,11 @@ const validateProject = {
 
     validatenewproject: function (formData){
         let errors = [];
-        
         let loggedUser = sessionManager.getLoggedUser();
-        let projectleader = formData.get("projectleader");
+        let projectleader = formData.get("projectLeader");
         let budget = formData.get("budget");
         
         if(projectleader !== loggedUser.username){
-            console.log(loggedUser);
             errors.push("El lider de proyecto debe de ser el usuario que se encuentra conectado actualmente");
         }
         if(projectleader.length === 0){

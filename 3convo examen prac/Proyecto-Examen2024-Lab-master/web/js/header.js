@@ -8,6 +8,7 @@ const logoutButton = document.getElementById("logout-button");
 const headerLogin = document.getElementById("header-login");
 const headerLogout = document.getElementById("logout-button");
 const headerRegister = document.getElementById("register-button");
+const headerCreateProject = document.getElementById("createproject");
 
 function main() {
     showUser();
@@ -44,6 +45,7 @@ function hideHeaderOptions() {
         headerRegister.style.display = "none";
     } else {
         headerLogout.style.display = "none"; //Debemos de cambiar el estilo del boton no del link
+        headerCreateProject.style.display = "none";
     }
 }
 

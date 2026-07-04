@@ -7,37 +7,36 @@ import { sessionManager } from "./utils/session.js";
 
 let urlParams = new URLSearchParams(window.location.search);
 let projectId = urlParams.get('id');
-
-//let projectId = null;
+let formulario = document.getElementById("formid");
 
 // Asegurarse de que el documento está completamente cargado
-document.addEventListener("DOMContentLoaded", function() {
+async function main(){
 
-    if(projectId !== null){
+    if(projectId !== null && sessionManager.isLogged()){
         loadCurrentProject();
+    }else if(!sessionManager.isLogged()){//Para evitar que un usuario que no ha iniciado sesion trate de editar un proyecto
+        messageRenderer.showErrorMessage("No ha iniciado sesion");
     }
 
-    // Adjuntar el evento al formulario
-    document.getElementById("formid").addEventListener("submit", handleFormSubmit);
-});
+    formulario.onsubmit = handleFormSubmit;
+}
 
 async function loadCurrentProject(){
     let nombre = document.getElementById("name");
-    let liderproyecto = document.getElementById("projectleader");
+    let liderproyecto = document.getElementById("projectLeader");
     let fechafinal = document.getElementById("endDate");
     let presupuesto = document.getElementById("budget");
     let descripcion = document.getElementById("description");
-    let imagen = document.getElementById("image");
+    let imagen = document.getElementById("imageUrl");
 
-    //pageTitle.textContent = "Editing a project #"+projectId;
     try{
         let currentproject = await projectsAPI_auto.getById(projectId);
         nombre.value = currentproject.name;
-        liderproyecto.value = currentproject.projectleader;
+        liderproyecto.value = currentproject.projectLeader;
         fechafinal.value = currentproject.endDate;
         presupuesto.value = currentproject.budget;
         descripcion.value = currentproject.description;
-        imagen.value = currentproject.image;
+        imagen.value = currentproject.imageUrl;
     }catch(err){
         console.error(err);
     }
@@ -50,16 +49,26 @@ function getUrlParameter(name){
 }
 
 // Función para manejar el envío del formulario
-async function handleFormSubmit(e) {
-    e.preventDefault();
+async function handleFormSubmit(event) {
+    event.preventDefault();
 
     // Limpiar mensajes de error anteriores
     document.getElementById("errors").innerHTML = "";
 
-    let form = document.getElementById("formid");
+    let form = event.target;
     let formData = new FormData(form);
 
+    //Hago el siguiente for para ver los entries de mi formData ver que datos contiene y asi ver que ocurre
+
+    /*for(var pair of formData.entries()){
+        console.log(pair[0] + ', ' + pair[1]);
+    }*/
+
     const errors = validateProject.validatenewproject(formData);
+
+    //Añado el userid a los campos del formData ya que si la base de datos no lo recibe no puede crear el nuevo proyecto
+
+    formData.append("userId",sessionManager.getLoggedId());
 
     if(errors.length > 0){
         // Mostrar errores de validación
@@ -68,21 +77,15 @@ async function handleFormSubmit(e) {
         }
     } else {
         try {
-            
-            let response;
 
-            if(projectId){
-                response = await projectsAPI_auto.update(formData, projectId);
-                messageRenderer.showSuccessMessage("Proyecto actualizado con exito")
-            }else{//Aqui añadimos el id de usuario
-                let userId = sessionManager.getLoggedId();
-                console.log(userId);
-                console.log(formData.values());//Comprobar que este el projectleader
-                formData.append("userId",userId);
-                response = await projectsAPI_auto.create(formData);
-                messageRenderer.showSuccessMessage("Proyecto registrado con éxito");
+            if(projectId === null){
+                await projectsAPI_auto.create(formData);
+            }else{
+                await projectsAPI_auto.update(formData,projectId);
             }
-
+            
+            //window.location.href = "projects.html";
+            
             // Limpiar el formulario
             form.reset();
             
@@ -105,3 +108,5 @@ async function handleFormSubmit(e) {
         }
     }
 }
+
+document.addEventListener("DOMContentLoaded",main);

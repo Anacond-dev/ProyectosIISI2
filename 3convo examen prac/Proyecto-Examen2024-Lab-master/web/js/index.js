@@ -3,6 +3,7 @@
 import { projectsRenderer } from "./renderers/projects.js";
 import { messageRenderer } from "./renderers/messages.js";
 import { projectswithusersAPI_auto } from "./api/_projectswithusers.js";
+import { sessionManager } from "./utils/session.js";
 
 async function main() {
     // Main function that will run when the page is ready
