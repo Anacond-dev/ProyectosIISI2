@@ -14,19 +14,21 @@ async function main(){
             lista.push(project.budget);
             contenedor.appendChild(carta,projects);
         }
-        //resaltarMayorBudget(lista);
+        resaltarMayorBudget(lista, projects);
     }catch(err){
         console.error(err);
     }
 }
 
-/*function resaltarMayorBudget(budgets,projects){
+function resaltarMayorBudget(budgets,projects){
     budgets.sort();
     let b = budgets[0];
-    console.log(b);
-    let id = projects.find(p => Number(p.budget) === Number(b));
+    /*
+    
+    */
+    let id = projects.find(p => Number(p.budget) === Number(b)).projectId;
     let maxbudget = document.getElementById(id);
-    maxbudget.classList.add("card border-1 border-dark rounded");
-}*/
+    maxbudget.classList.add("bg-warning");
+}
 
 document.addEventListener("DOMContentLoaded",main);
