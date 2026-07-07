@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <link rel="icon" href="images/favicon.ico" />
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/axios.min.js"></script>
+    <script src="js/utils/include.js"></script>
+
+    <script src="js/header.js" type="module"></script>
+
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="page-header"></div>
+    <div class="container">
+        <div class="row" id="errors"></div>
+
+        <div class="row">
+            <div class="col-md text-center">
+                <h3>Subir Comentario</h3>
+            </div>
+        </div>
+
+        <hr>
+
+        <form id="comment-form">
+            <div class="row">
+                <div class="col-md mb-3">
+                    <label for="authorusername-input">AuthorUsername:</label>
+                    <input type="number" class="form-control" id="authorusername-input" name="authorUserId">
+                </div>
+
+                <div class="col-md mb-3">
+                    <label for="target-input">TargetUsername:</label>
+                    <input type="number" class="form-control" id="target-input" name="targetUserId">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md mb-3">
+                    <label for="date-input">Date:</label>
+                    <input type="datetime" class="form-control" id="date-input" name="createdAt">
+                </div>
+
+                <div class="col-md mb-3">
+                    <label for="comment-input">Comment:</label>
+                    <input type="text" class="form-control" id="comment-input" name="commentText">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md text-center">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </div>
+        </form>
+
+        </div>
+    </div>
+
+    <script>
+        include("header.html","#page-header");
+    </script>
+    
+</body>
+</html>
